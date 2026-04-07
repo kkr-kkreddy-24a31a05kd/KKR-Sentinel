@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KKR Sentinel | Elite Fraud Protection 2026</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700&family=JetBrains+Mono&display=swap');
+        
+        :root {
+            --brand-blue: #3b82f6;
+            --brand-emerald: #10b981;
+            --brand-red: #ef4444;
+            --bg-dark: #020617;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-dark);
+            color: #f8fafc;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        /* Glassmorphism & Effects */
+        .glass-card {
+            background: rgba(15, 23, 42, 0.7);
+            backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+        }
+
+        .cyber-grid {
+            background-image: radial-gradient(rgba(59, 130, 246, 0.1) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #60a5fa 0%, #34d399 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Status & Animations */
+        .status-pulse {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--brand-emerald);
+            box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+            animation: pulse-green 2s infinite;
+        }
+
+        @keyframes pulse-green {
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+            70% { transform: scale(1.1); box-shadow: 0 0 15px 0 rgba(16, 185, 129, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+        }
+
+        .terminal-scroll::-webkit-scrollbar { width: 4px; }
+        .terminal-scroll::-webkit-scrollbar-thumb { background: #334155; border-radius: 10px; }
+
+        .auth-overlay {
+            display: flex;
+            position: fixed;
+            inset: 0;
+            background: radial-gradient(circle at center, #0f172a 0%, #020617 100%);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .hidden-auth {
+            opacity: 0;
+            transform: translateY(-100%);
+            pointer-events: none;
+        }
+
+        .floating {
+            animation: floating 4s ease-in-out infinite;
+        }
+
+        @keyframes floating {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+        }
+
+        /* Scanline Effect */
+        .scanline {
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background: rgba(59, 130, 246, 0.2);
+            top: 0;
+            animation: scan 3s linear infinite;
+        }
+
+        @keyframes scan {
+            0% { top: 0; }
+            100% { top: 100%; }
+        }
+    </style>
+</head>
+<body class="cyber-grid">
+
+    <!-- Easy Access Login Screen -->
+    <div id="loginScreen" class="auth-overlay">
+        <div class="glass-card p-12 rounded-[3.5rem] w-full max-w-md text-center relative overflow-hidden border-blue-500/30">
+            <div class="scanline"></div>
+            <div class="w-24 h-24 bg-gradient-to-br from-blue-600 to-indigo-700 rounded-3xl flex items-center justify-center mx-auto mb-10 shadow-2xl shadow-blue-500/40 floating">
+                <svg class="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+                </svg>
+            </div>
+            
+            <h1 class="text-4xl font-extrabold mb-3 tracking-tighter">KKR <span class="text-blue-500">Sentinel</span></h1>
+            <p class="text-slate-400 mb-10 text-sm font-medium tracking-wide">Secure Biometric Bypass Active • 2026</p>
+            
+            <div class="space-y-4">
+                <button onclick="handleLogin()" class="group relative w-full bg-white text-slate-950 font-bold py-5 rounded-2xl transition-all hover:bg-blue-50 hover:shadow-[0_0_30px_rgba(255,255,255,0.3)] active:scale-95 flex items-center justify-center space-x-3">
+                    <span class="text-lg">Initialize System</span>
+                    <svg class="w-6 h-6 group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path></svg>
+                </button>
+                <p class="text-[10px] text-slate-500 uppercase tracking-[0.3em] font-bold">Encrypted Handshake: SUCCESS</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass-card border-t-0 border-x-0 border-b-slate-800/50 px-6">
+        <div class="max-w-7xl mx-auto h-24 flex items-center justify-between">
+            <div class="flex items-center space-x-4 cursor-pointer" onclick="window.scrollTo(0,0)">
+                <div class="w-12 h-12 bg-blue-600 rounded-2xl flex items-center justify-center shadow-lg shadow-blue-500/30 transition-transform hover:rotate-12">
+                    <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04m17.236 0a11.959 11.959 0 01-2.251 5.74m-12.734 0a11.959 11.959 0 01-2.251-5.74M12 21a11.955 11.955 0 01-8.618-3.04m17.236 0a11.955 11.955 0 01-8.618 3.04"></path></svg>
+                </div>
+                <span class="font-bold text-2xl tracking-tighter uppercase">KKR <span class="text-blue-500">Sentinel</span></span>
+            </div>
+            <div class="hidden md:flex space-x-12 text-sm font-bold text-slate-400">
+                <a href="#live-demo" class="hover:text-blue-400 transition-colors py-2">Monitoring</a>
+                <a href="#architecture" class="hover:text-blue-400 transition-colors py-2">Neural Logic</a>
+                <a href="#developers" class="hover:text-blue-400 transition-colors py-2">Developers</a>
+            </div>
+            <div class="flex items-center space-x-4">
+                <div class="hidden lg:block text-right">
+                    <div class="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Global Status</div>
+                    <div class="text-xs font-bold text-emerald-400">NOMINAL OPERATION</div>
+                </div>
+                <div class="status-pulse"></div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative pt-64 pb-32 px-6">
+        <div class="max-w-6xl mx-auto text-center">
+            <div class="inline-flex items-center space-x-3 px-6 py-2.5 mb-10 glass-card rounded-2xl text-[11px] font-bold tracking-[0.25em] uppercase text-blue-400 border-blue-500/30">
+                <span class="w-2 h-2 bg-blue-500 rounded-full animate-ping"></span>
+                <span>Elite 2026 Surveillance Engine</span>
+            </div>
+            <h1 class="text-7xl md:text-9xl font-extrabold mb-10 leading-[0.9] tracking-tighter">
+                Smart <span class="gradient-text italic">Shield.</span>
+            </h1>
+            <p class="text-xl md:text-2xl text-slate-400 mb-16 max-w-4xl mx-auto leading-relaxed font-light">
+                Autonomous fraud detection utilizing <span class="text-white font-semibold">CNN-Ensemble</span> architecture. Engineered for high-speed financial environments where every millisecond counts.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-6">
+                <a href="#live-demo" class="bg-blue-600 hover:bg-blue-500 px-10 py-5 rounded-2xl font-bold transition-all shadow-xl shadow-blue-600/20 active:scale-95">Open Monitoring Hub</a>
+                <a href="#architecture" class="glass-card px-10 py-5 rounded-2xl font-bold hover:bg-slate-800 transition-all active:scale-95">View Neural Specs</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Monitoring Hub (Live Demo) -->
+    <section id="live-demo" class="py-24 px-6 bg-slate-950/40">
+        <div class="max-w-7xl mx-auto">
+            <div class="mb-16 text-center lg:text-left flex flex-col lg:flex-row lg:items-end justify-between gap-8">
+                <div>
+                    <h2 class="text-5xl font-bold mb-4 tracking-tighter">Threat Monitoring</h2>
+                    <p class="text-slate-500 text-lg">Live transaction analysis and neural kernel telemetry.</p>
+                </div>
+                <div class="flex flex-wrap justify-center gap-3">
+                    <button onclick="simulateTransaction('LEGIT')" class="bg-slate-800 hover:bg-slate-700 text-white px-8 py-4 rounded-2xl text-sm font-bold transition-all border border-slate-700 active:scale-95 shadow-lg">
+                        Simulate Regular Data
+                    </button>
+                    <button onclick="simulateTransaction('FRAUD')" class="bg-blue-600 hover:bg-blue-500 text-white px-10 py-4 rounded-2xl text-sm font-bold transition-all shadow-xl shadow-blue-600/30 active:scale-95">
+                        Trigger Threat Scan
+                    </button>
+                </div>
+            </div>
+
+            <div class="glass-card rounded-[4rem] overflow-hidden border border-slate-800 shadow-3xl">
+                <div class="grid grid-cols-1 lg:grid-cols-12 h-full min-h-[600px]">
+                    <!-- Feed Column -->
+                    <div class="lg:col-span-3 p-10 border-b lg:border-b-0 lg:border-r border-slate-800/50 bg-slate-900/20">
+                        <h4 class="text-xs font-bold text-slate-500 uppercase mb-8 tracking-widest flex items-center">
+                            <span class="w-2 h-2 bg-emerald-500 rounded-full mr-2"></span> Active Feeds
+                        </h4>
+                        <div class="space-y-5">
+                            <div class="p-6 bg-slate-900/60 rounded-[2rem] border border-slate-800 hover:border-blue-500 transition-all group">
+                                <div class="flex justify-between items-center mb-3">
+                                    <span class="text-sm font-bold">ATM_NETWORK</span>
+                                    <span class="text-[10px] text-emerald-400 font-mono font-bold">99.2%</span>
+                                </div>
+                                <div class="w-full h-2 bg-slate-800 rounded-full overflow-hidden">
+                                    <div class="w-4/5 h-full bg-emerald-500 transition-all duration-1000"></div>
+                                </div>
+                            </div>
+                            <div class="p-6 bg-slate-900/60 rounded-[2rem] border border-slate-800 hover:border-blue-500 transition-all group">
+                                <div class="flex justify-between items-center mb-3">
+                                    <span class="text-sm font-bold">SWIFT_CORE</span>
+                                    <span class="text-[10px] text-blue-400 font-mono font-bold">SYNCING</span>
+                                </div>
+                                <div class="w-full h-2 bg-slate-800 rounded-full overflow-hidden">
+                                    <div class="w-full h-full bg-blue-500 animate-pulse"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Analysis Center -->
+                    <div class="lg:col-span-5 p-10 border-b lg:border-b-0 lg:border-r border-slate-800/50 bg-slate-950/80 relative">
+                         <h4 class="text-xs font-bold text-slate-500 uppercase mb-8 tracking-widest">Analysis Kernel</h4>
+                         <div id="terminal" class="h-[400px] font-mono text-[13px] text-blue-300 overflow-y-auto terminal-scroll space-y-3 leading-relaxed">
+                            <div class="text-slate-600 italic">>> KKR Sentinel Core initialized...</div>
+                            <div class="text-slate-600 italic">>> Establishing secure tunnels... DONE</div>
+                            <div class="text-emerald-500 font-bold">>> READY: Standby for transaction payload.</div>
+                        </div>
+                        <div class="absolute bottom-10 left-10 right-10 p-4 bg-blue-500/10 border border-blue-500/20 rounded-2xl flex items-center space-x-4">
+                            <div class="animate-spin rounded-full h-4 w-4 border-2 border-blue-500 border-t-transparent"></div>
+                            <span class="text-[10px] font-bold text-blue-400 uppercase tracking-widest">Neural Listeners Active</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Result Visualizer -->
+                    <div class="lg:col-span-4 p-12 flex flex-col justify-center items-center text-center">
+                        <div id="statusIcon" class="w-32 h-32 bg-slate-900 rounded-[3rem] flex items-center justify-center mb-10 transition-all duration-700 shadow-2xl border border-slate-800">
+                            <svg id="mainIcon" class="w-14 h-14 text-slate-700 transition-all duration-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                            </svg>
+                        </div>
+                        <h3 id="statusTitle" class="text-4xl font-extrabold mb-4 tracking-tighter">IDLE</h3>
+                        <p id="statusDesc" class="text-slate-500 font-medium text-sm leading-relaxed max-w-[200px]">Awaiting data input for careful analysis...</p>
+                        
+                        <div class="mt-12 w-full bg-slate-900/60 rounded-[2.5rem] p-8 border border-slate-800 shadow-inner">
+                            <div class="flex justify-between text-[11px] text-slate-500 mb-4 uppercase font-bold tracking-[0.2em]">
+                                <span>Threat Probability</span>
+                                <span id="cnnScore" class="text-blue-400 font-mono">0.00%</span>
+                            </div>
+                            <div class="w-full h-4 bg-slate-800 rounded-full overflow-hidden border border-slate-700/50 p-1">
+                                <div id="cnnBar" class="h-full bg-blue-500 transition-all duration-1000 rounded-full" style="width: 0%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Neural Logic (Architecture) -->
+    <section id="architecture" class="py-32 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
+                <div class="order-2 lg:order-1">
+                    <div class="grid grid-cols-2 gap-6">
+                        <div class="glass-card p-10 rounded-[3rem] border-blue-500/20 hover:border-blue-500 transition-colors">
+                            <h5 class="text-4xl font-bold mb-2">99.8%</h5>
+                            <p class="text-xs font-bold text-slate-500 uppercase tracking-widest">Precision</p>
+                        </div>
+                        <div class="glass-card p-10 rounded-[3rem] border-emerald-500/20 hover:border-emerald-500 transition-colors">
+                            <h5 class="text-4xl font-bold mb-2">0.4ms</h5>
+                            <p class="text-xs font-bold text-slate-500 uppercase tracking-widest">Latency</p>
+                        </div>
+                        <div class="col-span-2 glass-card p-10 rounded-[3rem] flex items-center space-x-8">
+                            <div class="flex-1">
+                                <h5 class="text-xl font-bold mb-2">Adaptive Learning</h5>
+                                <p class="text-sm text-slate-400">System updates weights in real-time based on new fraud vectors.</p>
+                            </div>
+                            <div class="w-20 h-20 bg-blue-600/20 rounded-full flex items-center justify-center">
+                                <svg class="w-8 h-8 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="order-1 lg:order-2">
+                    <h2 class="text-6xl font-extrabold mb-8 tracking-tighter">Neural <span class="text-blue-500">Logic.</span></h2>
+                    <p class="text-lg text-slate-400 mb-10 leading-relaxed">
+                        KKR Sentinel uses a proprietary hybrid model. The **CNN Layer** scans high-dimensional metadata for pattern clusters, while the **Random Forest Ensemble** enforces a zero-trust voting mechanism to verify every final decision.
+                    </p>
+                    <ul class="space-y-6">
+                        <li class="flex items-center space-x-4">
+                            <div class="w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center text-[10px] font-bold">1</div>
+                            <span class="text-slate-300 font-semibold">Recursive Feature Elimination</span>
+                        </li>
+                        <li class="flex items-center space-x-4">
+                            <div class="w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center text-[10px] font-bold">2</div>
+                            <span class="text-slate-300 font-semibold">SMOTE Minority Enhancement</span>
+                        </li>
+                        <li class="flex items-center space-x-4">
+                            <div class="w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center text-[10px] font-bold">3</div>
+                            <span class="text-slate-300 font-semibold">Gradient Boosted Verification</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Developers Section -->
+    <section id="developers" class="py-32 px-6 bg-blue-600/5">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-5xl font-extrabold mb-6 tracking-tighter">Developer Portal</h2>
+            <p class="text-slate-400 mb-16">The core engine is open for verified KKR integrators. Use the API endpoint for sub-second classification.</p>
+            
+            <div class="glass-card rounded-[3rem] overflow-hidden border border-slate-800 text-left">
+                <div class="bg-slate-900/80 px-8 py-4 border-b border-slate-800 flex justify-between items-center">
+                    <div class="flex space-x-2">
+                        <div class="w-3 h-3 bg-red-500 rounded-full"></div>
+                        <div class="w-3 h-3 bg-amber-500 rounded-full"></div>
+                        <div class="w-3 h-3 bg-emerald-500 rounded-full"></div>
+                    </div>
+                    <span class="text-[10px] font-mono font-bold text-slate-500 uppercase tracking-widest">sentinel_v4_core.py</span>
+                </div>
+                <div class="p-10 font-mono text-sm text-blue-400/90 overflow-x-auto whitespace-pre leading-loose">
+<span class="text-purple-400 italic"># Initialize KKR Sentinel Ensemble Class</span>
+<span class="text-blue-500 font-bold">class</span> <span class="text-white">SentinelEngine</span>:
+    <span class="text-blue-500 font-bold">def</span> <span class="text-emerald-400">__init__</span>(self):
+        self.cnn = load_model(<span class="text-amber-500">'kkr_cnn_v26.h5'</span>)
+        self.rf = load_pickle(<span class="text-amber-500">'kkr_rf_v26.pkl'</span>)
+    
+    <span class="text-blue-500 font-bold">def</span> <span class="text-emerald-400">analyze</span>(self, packet):
+        <span class="text-slate-500"># Spatial pattern detection</span>
+        latent_vec = self.cnn.predict(packet)
+        <span class="text-slate-500"># Ensemble consensus voting</span>
+        is_threat = self.rf.predict(latent_vec)
+        <span class="text-purple-400">return</span> is_threat</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-24 border-t border-slate-900 text-center px-6">
+        <div class="flex justify-center space-x-8 mb-12">
+            <a href="#" class="text-slate-500 hover:text-white transition-colors text-xs font-bold uppercase tracking-widest">Docs</a>
+            <a href="#" class="text-slate-500 hover:text-white transition-colors text-xs font-bold uppercase tracking-widest">Security</a>
+            <a href="#" class="text-slate-500 hover:text-white transition-colors text-xs font-bold uppercase tracking-widest">Console</a>
+        </div>
+        <p class="text-slate-600 text-xs font-bold uppercase tracking-[0.4em] mb-4">Engineered by KKR Elite</p>
+        <p class="text-slate-400 text-sm">&copy; 2026 KKR Sentinel. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // EASY ACCESS LOGIN
+        function handleLogin() {
+            const screen = document.getElementById('loginScreen');
+            screen.classList.add('hidden-auth');
+            // Allow interactions after transition
+            setTimeout(() => {
+                screen.style.display = 'none';
+            }, 800);
+        }
+
+        // Efficient Transaction Engine
+        let isProcessing = false;
+
+        function simulateTransaction(type) {
+            if (isProcessing) return;
+            isProcessing = true;
+
+            const term = document.getElementById('terminal');
+            const iconBox = document.getElementById('statusIcon');
+            const mainIcon = document.getElementById('mainIcon');
+            const title = document.getElementById('statusTitle');
+            const desc = document.getElementById('statusDesc');
+            const bar = document.getElementById('cnnBar');
+            const scoreLabel = document.getElementById('cnnScore');
+
+            const isFraud = type === 'FRAUD';
+            const txID = "KKR-" + Math.floor(Math.random() * 900000 + 100000);
+            const score = isFraud ? (88 + Math.random() * 11) : (0.5 + Math.random() * 8);
+
+            // Log Helper
+            const pushLog = (msg, color = 'text-blue-300') => {
+                const div = document.createElement('div');
+                div.className = `${color} border-l-2 border-current pl-3 py-1 opacity-0 transition-opacity duration-300`;
+                div.innerHTML = `<span class="text-slate-700 font-bold mr-2">[${new Date().toLocaleTimeString()}]</span> ${msg}`;
+                term.prepend(div);
+                setTimeout(() => div.style.opacity = '1', 50);
+            };
+
+            // 1. PHASE: INITIALIZATION
+            pushLog(`Incoming Packet Detected: ${txID}`, 'text-white font-bold');
+            title.innerText = "SCANNING";
+            title.className = "text-4xl font-extrabold mb-4 tracking-tighter text-blue-500 animate-pulse";
+            desc.innerText = `Analyzing hash: 0x${Math.random().toString(16).slice(2, 10)}`;
+            iconBox.className = "w-32 h-32 bg-blue-600 rounded-[3rem] flex items-center justify-center mb-10 rotate-45 border-4 border-blue-400 shadow-2xl shadow-blue-500/40 text-white";
+            mainIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>';
+            mainIcon.classList.add('animate-spin');
+
+            // 2. PHASE: FEATURE EXTRACTION
+            setTimeout(() => {
+                pushLog(`CNN layers extracting spatial tensors...`, 'text-slate-500');
+                bar.style.width = score + '%';
+                scoreLabel.innerText = score.toFixed(2) + "%";
+            }, 800);
+
+            // 3. PHASE: ENSEMBLE VOTING
+            setTimeout(() => {
+                pushLog(`Random Forest Ensemble initiating voting protocol...`, 'text-slate-500');
+            }, 1600);
+
+            // 4. PHASE: FINAL DECISION
+            setTimeout(() => {
+                mainIcon.classList.remove('animate-spin');
+                isProcessing = false;
+
+                if (isFraud) {
+                    pushLog(`ALERT: CRITICAL THREAT DETECTED IN ${txID}`, 'text-red-500 font-bold');
+                    iconBox.className = "w-32 h-32 bg-red-600 rounded-[3rem] flex items-center justify-center mb-10 border-4 border-red-400 shadow-2xl shadow-red-500/50 text-white";
+                    mainIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>';
+                    title.innerText = "BLOCKING";
+                    title.className = "text-4xl font-extrabold mb-4 tracking-tighter text-red-500";
+                    desc.innerText = `Threat Vector Blocked: ${txID}`;
+                    bar.className = "h-full bg-red-600 transition-all duration-700 rounded-full shadow-[0_0_10px_#ef4444]";
+                } else {
+                    pushLog(`STATUS: CLEAR - Transaction authorized.`, 'text-emerald-500');
+                    iconBox.className = "w-32 h-32 bg-emerald-600 rounded-[3rem] flex items-center justify-center mb-10 border-4 border-emerald-400 shadow-2xl shadow-emerald-500/50 text-white";
+                    mainIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>';
+                    title.innerText = "VERIFIED";
+                    title.className = "text-4xl font-extrabold mb-4 tracking-tighter text-emerald-500";
+                    desc.innerText = "Data pattern matches secure profile.";
+                    bar.className = "h-full bg-emerald-500 transition-all duration-700 rounded-full shadow-[0_0_10px_#10b981]";
+                }
+            }, 2500);
+        }
+    </script>
+</body>
+</html>
